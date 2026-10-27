@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="mn">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Шүдний Эмнэлгийн Виртуал Аялал</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;800&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#f2f8f7;--surface:#ffffff;--ink:#0d2b30;--mute:#4d6a6e;--line:#cfe2e0;--teal:#0f766e;--teal2:#14b8a6;--coral:#e4572e;--room:#e4f1ef;
+box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media(prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#0a1a1d;--surface:#10272b;--ink:#e6f4f2;--mute:#92b1b3;--line:#21424620;--line:#244449;--teal:#2dd4bf;--teal2:#14b8a6;--coral:#ff7a50;--room:#12302f;color-scheme:dark}}
+:root[data-theme="dark"]{--bg:#0a1a1d;--surface:#10272b;--ink:#e6f4f2;--mute:#92b1b3;--line:#244449;--teal:#2dd4bf;--teal2:#14b8a6;--coral:#ff7a50;--room:#12302f;color-scheme:dark}
+*{box-sizing:border-box}
+html{scroll-padding-top:env(safe-area-inset-top,0px);scroll-behavior:smooth}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:'Manrope',system-ui,-apple-system,'Segoe UI',Arial,sans-serif;line-height:1.65}
+.wrap{max-width:1040px;margin:0 auto;padding:0 20px}
+header.top{padding:18px 0;display:flex;justify-content:space-between;align-items:center;gap:12px}
+.brand{font-weight:800;color:var(--teal);letter-spacing:.2px}
+.btn{display:inline-block;background:var(--coral);color:#fff;text-decoration:none;font-weight:800;padding:13px 22px;border-radius:999px;border:0;cursor:pointer;font:inherit;font-weight:800}
+.btn.ghost{background:transparent;color:var(--teal);border:2px solid var(--teal)}
+:focus-visible{outline:3px solid var(--teal2);outline-offset:3px}
+.hero{display:grid;grid-template-columns:1.05fr 1fr;gap:36px;align-items:center;padding:28px 0 56px}
+h1{font-size:clamp(2rem,5.2vw,3.5rem);line-height:1.1;margin:0 0 16px;font-weight:800}
+.lead{color:var(--mute);font-size:1.08rem;max-width:52ch;margin:0 0 24px}
+.row{display:flex;gap:12px;flex-wrap:wrap}
+.plan{background:var(--surface);border:1px solid var(--line);border-radius:24px;padding:14px}
+.plan svg{width:100%;height:auto;display:block}
+.hs{cursor:pointer}
+.hs circle.dot{fill:var(--coral)}
+.hs circle.ring{fill:none;stroke:var(--coral);stroke-width:2;opacity:.5;transform-origin:center;transform-box:fill-box;animation:pulse 2.2s ease-out infinite}
+.hs.on circle.dot{fill:var(--teal)}
+.hs.on circle.ring{stroke:var(--teal)}
+@keyframes pulse{from{transform:scale(1);opacity:.6}to{transform:scale(2.2);opacity:0}}
+@media(prefers-reduced-motion:reduce){.hs circle.ring{animation:none}html{scroll-behavior:auto}}
+.info{margin-top:12px;padding:14px 16px;border-radius:16px;background:var(--room);min-height:92px}
+.info b{display:block;margin-bottom:2px;color:var(--teal)}
+.info span{color:var(--mute);font-size:.95rem}
+section{padding:48px 0;border-top:1px solid var(--line)}
+h2{font-size:clamp(1.5rem,3.4vw,2.1rem);margin:0 0 10px;line-height:1.2}
+.sub{color:var(--mute);max-width:62ch;margin:0 0 26px}
+.tabs{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:16px}
+.tab{padding:10px 16px;border-radius:12px;border:1px solid var(--line);background:var(--surface);color:var(--ink);font:inherit;font-weight:600;cursor:pointer}
+.tab[aria-selected="true"]{background:var(--teal);color:#fff;border-color:var(--teal)}
+:root[data-theme="dark"] .tab[aria-selected="true"]{color:#06201e}
+@media(prefers-color-scheme:dark){:root:not([data-theme="light"]) .tab[aria-selected="true"]{color:#06201e}}
+.step-card{background:var(--surface);border:1px solid var(--line);border-radius:20px;padding:22px 24px;max-width:720px}
+.step-card h3{margin:0 0 6px;font-size:1.25rem}
+.step-card p{margin:0;color:var(--mute)}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:14px}
+.tool{background:var(--surface);border:1px solid var(--line);border-radius:16px;padding:16px 18px}
+.tool h3{margin:0 0 4px;font-size:1.02rem;color:var(--teal)}
+.tool p{margin:0;color:var(--mute);font-size:.93rem}
+.cta{background:var(--teal);color:#fff;border-radius:28px;padding:36px 28px;display:flex;justify-content:space-between;align-items:center;gap:20px;flex-wrap:wrap}
+:root[data-theme="dark"] .cta{color:#06201e}
+@media(prefers-color-scheme:dark){:root:not([data-theme="light"]) .cta{color:#06201e}}
+.cta h2{margin:0 0 4px}.cta p{margin:0;opacity:.9}
+footer{padding:28px 0 40px;color:var(--mute);font-size:.9rem}
+@media(max-width:800px){.hero{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header class="top">
+    <span class="brand">Dental Clinic Simulator</span>
+    <a class="btn ghost" href="https://dental-clinic-c89.pages.dev/">Симулятор нээх</a>
+  </header>
+
+  <div class="hero">
+    <div>
+      <h1>Өвчтөнтэй уулзахаасаа өмнө эмнэлгийн өрөөгөөр алхаарай</h1>
+      <p class="lead">Этүгэн их сургуулийн Нүүр ам судлалын сургуулийн практик сургалтад зориулсан виртуал лаборатори. 360° панорама болон 3D загвараар шүдний эмнэлгийн орчин, багаж хэрэгсэл, шүд авах процедурыг урьдчилан судлаарай.</p>
+      <div class="row">
+        <a class="btn" href="https://dental-clinic-c89.pages.dev/">Виртуал аялал эхлүүлэх</a>
+        <a class="btn ghost" href="#procedure">Процедурыг үзэх</a>
+      </div>
+    </div>
+    <div class="plan" aria-label="Эмчилгээний өрөөний тойм зураг">
+      <svg viewBox="0 0 400 300" role="img" aria-label="Өрөөний байрлалын зураг">
+        <rect x="8" y="8" width="384" height="284" rx="18" fill="var(--room)" stroke="var(--line)" stroke-width="2"/>
+        <rect x="150" y="100" width="110" height="64" rx="32" fill="var(--teal)" opacity=".9"/>
+        <rect x="244" y="112" width="34" height="40" rx="10" fill="var(--teal2)"/>
+        <rect x="290" y="40" width="82" height="34" rx="8" fill="var(--surface)" stroke="var(--line)" stroke-width="2"/>
+        <rect x="28" y="40" width="80" height="34" rx="8" fill="var(--surface)" stroke="var(--line)" stroke-width="2"/>
+        <rect x="28" y="214" width="90" height="48" rx="8" fill="var(--surface)" stroke="var(--line)" stroke-width="2"/>
+        <rect x="300" y="200" width="72" height="62" rx="8" fill="var(--surface)" stroke="var(--line)" stroke-width="2"/>
+        <rect x="170" y="268" width="60" height="24" fill="var(--bg)" stroke="var(--line)" stroke-width="2"/>
+        <text x="200" y="285" font-size="11" text-anchor="middle" fill="var(--mute)" font-family="Manrope,sans-serif">Орц</text>
+        <g class="hs" data-i="0" tabindex="0" role="button" aria-label="Эмчилгээний сандал"><circle class="ring" cx="205" cy="132" r="8"/><circle class="dot" cx="205" cy="132" r="8"/></g>
+        <g class="hs" data-i="1" tabindex="0" role="button" aria-label="Багажны тавиур"><circle class="ring" cx="331" cy="57" r="8"/><circle class="dot" cx="331" cy="57" r="8"/></g>
+        <g class="hs" data-i="2" tabindex="0" role="button" aria-label="Рентген"><circle class="ring" cx="68" cy="57" r="8"/><circle class="dot" cx="68" cy="57" r="8"/></g>
+        <g class="hs" data-i="3" tabindex="0" role="button" aria-label="Ариутгал"><circle class="ring" cx="73" cy="238" r="8"/><circle class="dot" cx="73" cy="238" r="8"/></g>
+        <g class="hs" data-i="4" tabindex="0" role="button" aria-label="Угаалтуур"><circle class="ring" cx="336" cy="231" r="8"/><circle class="dot" cx="336" cy="231" r="8"/></g>
+      </svg>
+      <div class="info" id="info" aria-live="polite"><b>Цэгүүдийг дарж үзнэ үү</b><span>Өрөөний бүтэц, тоног төхөөрөмжийн байршлыг энд танилцуулна.</span></div>
+    </div>
+  </div>
+
+  <section id="procedure">
+    <h2>Шүд авах процедурын үе шатууд</h2>
+    <p class="sub">Бодит эмчилгээнд орохоосоо өмнө дарааллыг нь нэг удаа цээжилж, алхам бүрийн утгыг ойлгоорой.</p>
+    <div class="tabs" role="tablist" id="tabs"></div>
+    <div class="step-card" id="step" role="tabpanel"></div>
+  </section>
+
+  <section>
+    <h2>Багаж хэрэгсэл</h2>
+    <p class="sub">Симулятор дахь үндсэн багажуудын товч танилцуулга.</p>
+    <div class="grid">
+      <div class="tool"><h3>Ам харах толь</h3><p>Шүд, буйлны хүрч харахад хэцүү хэсгийг харуулна.</p></div>
+      <div class="tool"><h3>Зонд</h3><p>Шүдний гадаргуу, цооролтыг шалгана.</p></div>
+      <div class="tool"><h3>Тариур</h3><p>Хэсгийн мэдээгүйжүүлэлтийн бодисыг тарина.</p></div>
+      <div class="tool"><h3>Элеватор</h3><p>Шүдийг буйлнаас зөөлөн сулруулна.</p></div>
+      <div class="tool"><h3>Шүд авах хавчуур</h3><p>Сулирсан шүдийг барьж гаргана.</p></div>
+      <div class="tool"><h3>Ариутгалын хайрцаг</h3><p>Багажийг дахин хэрэглэхээс өмнө цэвэрлэж ариутгана.</p></div>
+    </div>
+  </section>
+
+  <section>
+    <div class="cta">
+      <div><h2>Эмнэлгийн орчинтой танилц</h2><p>360° панорама, 3D интерактив загвар.</p></div>
+      <a class="btn" href="https://dental-clinic-c89.pages.dev/">Симулятор руу орох</a>
+    </div>
+  </section>
+
+  <footer>Этүгэн их сургууль · Нүүр ам судлалын сургуулийн сургалтын хэрэглэгдэхүүн</footer>
+</div>
+
+<script>
+var spots=[
+["Эмчилгээний сандал","Өвчтөн хэвтэх сандал. Гэрэл, толгойн түшлэг, эмчийн суудлын байрлалыг энд судална."],
+["Багажны тавиур","Эмчилгээний явцад хэрэглэх багажуудыг дарааллаар нь байрлуулсан гар хүрэх зайд буй тавиур."],
+["Рентген","Шүдний зураг авах төхөөрөмж. Шүдний үндэс, яс, орчны эдийг эмчилгээний өмнө үнэлнэ."],
+["Ариутгал","Ашигласан багажийг угааж, ариутгаж, ариун байдлыг хадгалах хэсэг."],
+["Угаалтуур","Гар угаах болон эмчилгээний дараа арчилгаа хийх цэг."]];
+var info=document.getElementById('info');
+document.querySelectorAll('.hs').forEach(function(g){
+ function pick(){document.querySelectorAll('.hs').forEach(function(x){x.classList.remove('on')});g.classList.add('on');var s=spots[g.dataset.i];info.innerHTML='<b>'+s[0]+'</b><span>'+s[1]+'</span>'}
+ g.addEventListener('click',pick);
+ g.addEventListener('keydown',function(e){if(e.key==='Enter'||e.key===' '){e.preventDefault();pick()}});
+});
+var steps=[
+["Үзлэг ба рентген","Шүдний байдал, үрэвсэл, үндэсийн хэлбэрийг үнэлж, шүд авах шаардлагатайг шийднэ."],
+["Мэдээгүйжүүлэлт (тариа)","Хэсгийн мэдээгүйжүүлэлтийн тариаг зөв цэгт тарьж, үйлчлэх хүртэл хүлээнэ."],
+["Шүдийг сулруулах","Элеватороор шүдийг буйлнаас зөөлөн салгаж, хөдөлгөөнтэй болгоно."],
+["Шүдийг авах","Хавчуураар шүдийг бариад, хяналттай хөдөлгөөнөөр гаргана."],
+["Шархны арчилгаа","Цус зогсоож, шархыг шалгаад, өвчтөнд арчилгааны зөвлөгөө өгнө."]];
+var tabs=document.getElementById('tabs'),card=document.getElementById('step');
+function show(i){
+ [].forEach.call(tabs.children,function(t,j){t.setAttribute('aria-selected',j===i)});
+ card.innerHTML='<h3>'+(i+1)+'. '+steps[i][0]+'</h3><p>'+steps[i][1]+'</p>';
+}
+steps.forEach(function(s,i){var b=document.createElement('button');b.className='tab';b.setAttribute('role','tab');b.textContent=(i+1)+'. '+s[0];b.onclick=function(){show(i)};tabs.appendChild(b)});
+show(0);
+</script>
+</body>
+</html>
